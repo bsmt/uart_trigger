@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Projects/stm32 readout/uart trigger/uart trigger.srcs/sources_1/new/uart_clkgen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_clkgen
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Projects/stm32 readout/uart trigger/uart trigger.srcs/sources_1/new/uart_rx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_rx
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Projects/stm32 readout/uart trigger/uart trigger.srcs/sources_1/new/uart_tx.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_tx
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Projects/stm32 readout/uart trigger/uart trigger.srcs/sim_1/new/uart_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_tb

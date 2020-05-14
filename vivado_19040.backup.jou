@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Mar 17 22:43:42 2020
+# Process ID: 19040
+# Current directory: E:/Projects/stm32 readout/uart trigger
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8172 E:\Projects\stm32 readout\uart trigger\uart trigger.xpr
+# Log file: E:/Projects/stm32 readout/uart trigger/vivado.log
+# Journal file: E:/Projects/stm32 readout/uart trigger\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {E:/Projects/stm32 readout/uart trigger/uart trigger.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
