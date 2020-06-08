@@ -5,6 +5,7 @@ module top_test();
 
 reg clk = 1'b1;
 reg [3:0] btn;
+reg ck_rst = 1'b1;
 reg tx_start;
 wire rx_line;
 wire trigger;
@@ -27,6 +28,7 @@ uart_tx #(.SYSCLK(100_000_000), .BAUDRATE(38400)) tx
 top _top
 (
     .clk(clk),
+    .ck_rst(ck_rst),
     .btn(btn),
     .target_rx(rx_line),
     .trigger(trigger),
@@ -42,6 +44,8 @@ begin
     btn[3] <= 1'b0;
     #10;
     btn[0] <= 1'b0;
+    
+    #500;
     
     // round 1
     tx_data <= 8'h11;
