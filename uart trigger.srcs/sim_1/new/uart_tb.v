@@ -37,6 +37,7 @@ uart_tx #(.SYSCLK(100_000_000), .BAUDRATE(115200)) tx
     .clk(clk),
     .rst(rst),
     .en(1'b1),
+    .start(1'b1),
     .tx_byte(8'h41),
     .tx_line(uart),
     .ready(uart_ready)

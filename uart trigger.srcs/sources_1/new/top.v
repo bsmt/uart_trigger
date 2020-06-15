@@ -33,7 +33,7 @@ module top(
     input wire ck_rst,
     input wire [3:0] btn,
     input wire target_rx,
-    input wire target_tx,
+    output wire target_tx,
     input wire uart_txd_in,
     output wire uart_rxd_out,
     output reg trigger,
@@ -49,7 +49,14 @@ localparam TRIGGER_HOLD_DUR   = 2'b11; // how many cycles to hold the trigger fo
 
 wire rst_btn = btn[0];
 
-assign uart_rxd_out = target_tx;
+// passthru USB UART traffic, spy on our TX in too
+//assign target_tx = uart_txd_in;
+assign uart_rxd_out = target_rx;
+//wire uart_spy_line = uart_txd_in;
+
+// remove rx echo on TX pin later
+wire uart_spy_line = target_rx;
+assign target_tx = target_rx;
 
 reg uart_en = 1'b1;
 wire [7:0] uart_byte;
@@ -57,15 +64,15 @@ wire uart_valid;
 reg [1:0] state;
 reg [1:0] trigger_count;
 
-uart_rx #(.SYSCLK(100_000_000), .BAUDRATE(38400)) rx
+uart_rx #(.SYSCLK(100_000_000), .BAUDRATE(9600)) rx
 (
     .clk(clk),        // system clock
     .rst(rst),
     .en(uart_en),         // enable
-    .rx_line(target_tx),    // serial tx line
+    .rx_line(uart_spy_line), // serial tx line
     .data(uart_byte), // a received byte
     .valid(uart_valid)       // 1 when a complete byte is received and ready to be buffered
-); 
+);
 
 always @(posedge clk)
 begin
@@ -101,7 +108,8 @@ begin
         begin
             if (uart_valid) // we found another byte!
             begin
-                if (uart_byte == 8'hee) // is it the checksum?
+                //if (uart_byte == 8'hee) // is it the checksum?
+                if (uart_byte == 8'hb9) // is it the checksum?
                 begin
                     state <= STATE_CHECK_BYTE;
                 end

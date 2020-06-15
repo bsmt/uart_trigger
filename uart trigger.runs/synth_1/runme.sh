@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='E:/Projects/stm32 readout/uart trigger/uart trigger.runs/synth_1'
+HD_PWD='C:/Users/ccash/Downloads/uart_trigger/uart trigger.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

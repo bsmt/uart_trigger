@@ -2,8 +2,8 @@
 # Webtalk v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Tue Mar 24 22:04:04 2020
-# Process ID: 3576
+# Start of session at: Tue Mar 24 22:04:23 2020
+# Process ID: 18448
 # Current directory: E:/Projects/stm32 readout/uart trigger/uart trigger.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source E:/Projects/stm32 readout/uart trigger/uart trigger.sim/sim_1/behav/xsim/xsim.dir/uart_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: E:/Projects/stm32 readout/uart trigger/uart trigger.sim/sim_1/behav/xsim/webtalk.log
@@ -11,4 +11,4 @@
 #-----------------------------------------------------------
 source E:/Projects/stm32 -notrace
 couldn't read file "E:/Projects/stm32": permission denied
-INFO: [Common 17-206] Exiting Webtalk at Tue Mar 24 22:04:04 2020...
+INFO: [Common 17-206] Exiting Webtalk at Tue Mar 24 22:04:23 2020...

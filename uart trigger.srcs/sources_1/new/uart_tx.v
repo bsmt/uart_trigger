@@ -29,8 +29,8 @@ module uart_tx
     input wire en,
     input wire [7:0] tx_byte,
     input wire start,
-    output reg tx_line = 1'b1,
-    output reg ready = 1'b1
+    output reg tx_line,
+    output reg ready
 );
 
 // state machine constants
@@ -59,6 +59,8 @@ begin
         state <= UART_IDLE;
         tx_line <= 1'b1;
         ready <= 1'b1;
+        local_data <= 8'h00;
+        bits_sent <= 3'b000;
     end
     else if (en)
     begin

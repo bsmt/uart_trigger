@@ -4,7 +4,7 @@ Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto f477283ae9
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-5021] port 'usb_rx' is not connected on this instance [E:/Projects/stm32 readout/uart trigger/uart trigger.srcs/sim_top/new/top_test.v:27]
+WARNING: [VRFC 10-5021] port 'uart_txd_in' is not connected on this instance [C:/Users/ccash/Downloads/uart_trigger/uart trigger.srcs/sim_top/new/top_test.v:28]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
