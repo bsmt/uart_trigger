@@ -64,7 +64,7 @@ wire uart_valid;
 reg [1:0] state;
 reg [1:0] trigger_count;
 
-uart_rx #(.SYSCLK(100_000_000), .BAUDRATE(9600)) rx
+uart_rx #(.SYSCLK(100_000_000), .BAUDRATE(9600), .PARITY(1)) rx
 (
     .clk(clk),        // system clock
     .rst(rst),
@@ -108,8 +108,8 @@ begin
         begin
             if (uart_valid) // we found another byte!
             begin
-                //if (uart_byte == 8'hee) // is it the checksum?
-                if (uart_byte == 8'hb9) // is it the checksum?
+                if (uart_byte == 8'hee) // is it the checksum?
+                //if (uart_byte == 8'hb9) // is it the checksum?
                 begin
                     state <= STATE_CHECK_BYTE;
                 end

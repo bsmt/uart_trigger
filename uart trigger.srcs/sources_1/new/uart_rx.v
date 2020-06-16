@@ -22,7 +22,8 @@
 
 module uart_rx
 #(parameter SYSCLK=100_000_000,
-  parameter BAUDRATE=115200)
+  parameter BAUDRATE=115200,
+  parameter PARITY=0)
 (
     input wire clk,        // system clock
     input wire rst,
@@ -33,17 +34,18 @@ module uart_rx
 );
 
 // state machine constants
-localparam UART_START      = 2'b00; // waiting for start bit
-localparam UART_START_WAIT = 2'b01; // wait for start bit to finish
-localparam UART_DATA       = 2'b10; // receiving 
-localparam UART_STOP       = 2'b11; // waiting for stop bit
+localparam UART_START      = 3'b000; // waiting for start bit
+localparam UART_START_WAIT = 3'b001; // wait for start bit to finish
+localparam UART_DATA       = 3'b010; // receiving 
+localparam UART_PARITY     = 3'b100; // receive parity bit
+localparam UART_STOP       = 3'b011; // waiting for stop bit
 
 
 wire uart_clk;
 wire uart_mid_clk;
 reg  baud_en;
 
-reg [1:0] state       = UART_START;
+reg [2:0] state       = UART_START;
 reg [2:0] bits_recved = 3'b0;
 
 
@@ -106,10 +108,27 @@ begin
                     data <= {rx_line, data[7:1]};
                     bits_recved <= bits_recved + 1'b1;
                     
-                    if (bits_recved == 3'd7)
+                    if (bits_recved == 3'd7) // goto next state
                     begin
-                        state <= UART_STOP;
+                        if (PARITY == 0)
+                        begin
+                            state <= UART_STOP;
+                        end
+                        else
+                        begin
+                            state <= UART_PARITY;
+                        end
                     end
+                end
+            end
+            UART_PARITY:
+            begin
+                // wait for next bit time
+                // then just go to next state
+                // we don't need no parity bits
+                if (uart_mid_clk)
+                begin
+                    state <= UART_STOP;
                 end
             end
             UART_STOP:
